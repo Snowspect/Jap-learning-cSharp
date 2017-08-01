@@ -72,11 +72,14 @@ public class RadioButtonClass
     // method for writing to file.
         private void Insert_element(string category)
         {
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + category + ".txt", true))
-            {
-                string Texter = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence.Text;
-                file.WriteLine(Texter);
-                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence.Text = "";
-            }
+        //stationary
+        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + category + ".txt", true))
+            //laptop
+            //using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + category + ".txt", true))
+        {
+            string Texter = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence.Text;
+            file.WriteLine(Texter);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence.Text = "";
+        }
         }
     }

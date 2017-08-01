@@ -1,8 +1,0 @@
-で　(Grp1 particle for action place)
-を　(Grp1 particle for direct object)
-か　(Grp3 particle for questions)
-は　(Grp2 particle for topic)
-へ　(Grp1 particle for direction)
-と　(Grp1 particle for noun+noun)
-も　(Grp2 particle for noun+verb, positive and negative)
-が　(Grp1 particle for action)

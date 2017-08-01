@@ -27,42 +27,17 @@ namespace WpfApp1
             ClearAndInput clinCheckVerbGroup = new ClearAndInput();
             //constantly copyiing. not good solution.. can't get ctrl+c to work...
             System.Windows.Clipboard.SetText(string.Join(Environment.NewLine, listBox.SelectedItems.OfType<string>().ToArray()));
-            if (Verb.IsChecked == true)
-            {
-                //checks if an item is actually selected and mark correct check box based on selected verb.
-                if (listBox.SelectedIndex != -1)
-                {
-                    //select item and check what verb group it belongs to
-                    string selected_element = listBox.SelectedItem.ToString();
-                    String[] grp1_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group1_verbs.txt");
-                    String[] grp2_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group2_verbs.txt");
-                    String[] grp3_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group3_verbs.txt");
 
-                    int TotalLenght = grp1_Tmp.Length + grp2_Tmp.Length + grp3_Tmp.Length;
+            //check the checkbox for verb group.
+            CheckSelectAndMarkGroup();
+        }
+        private void listBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClearAndInput clinCheckVerbGroup = new ClearAndInput();
+            //constantly copyiing. not good solution.. can't get ctrl+c to work...
+            System.Windows.Clipboard.SetText(string.Join(Environment.NewLine, listBox.SelectedItems.OfType<string>().ToArray()));
 
-                    for (int i = 0; i < TotalLenght; i++)
-                    {
-                        if (grp1_Tmp.Contains(selected_element))
-                        {
-                            group1_verb.IsChecked = true;
-                            group2_verb.IsChecked = false;
-                            group3_verb.IsChecked = false;
-                        }
-                        if (grp2_Tmp.Contains(selected_element))
-                        {
-                            group1_verb.IsChecked = false;
-                            group2_verb.IsChecked = true;
-                            group3_verb.IsChecked = false;
-                        }
-                        if (grp3_Tmp.Contains(selected_element))
-                        {
-                            group1_verb.IsChecked = false;
-                            group2_verb.IsChecked = false;
-                            group3_verb.IsChecked = true;
-                        }
-                    }
-                }
-            }
+            CheckSelectAndMarkGroup();
         }
 
 
@@ -88,13 +63,14 @@ namespace WpfApp1
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValuesForVerbs("group1_verbs","group2_verbs","group3_verbs");
+            clin.ClearListAndInputValuesForVerbs("group1_verbs", "group2_verbs", "group3_verbs");
 
             Hide_Names();
         }
 
         private void Noun_Checked(object sender, RoutedEventArgs e)
         {
+
             /////////////////// set radiobutton values as active or not /////////////
             Verb.IsChecked = false;
             Noun.IsChecked = true;
@@ -293,6 +269,11 @@ namespace WpfApp1
         {
             //put incorrect sentences into list with incorrect sentences
             string Texter = InputSentence.Text;
+            
+            //stationary
+            System.IO.File.WriteAllText(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\Input.txt", Texter);
+            
+            //laptop
             System.IO.File.WriteAllText(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\Input.txt", Texter);
         }
 
@@ -334,6 +315,60 @@ namespace WpfApp1
         {
             Name.Visibility = System.Windows.Visibility.Collapsed;
             Name_Border.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        //
+        private void CheckSelectAndMarkGroup()
+        {
+            if (Verb.IsChecked == true)
+            {
+
+                //checks if an item is actually selected and mark correct check box based on selected verb.
+                if (listBox.SelectedIndex != -1)
+                {
+                    //select item and check what verb group it belongs to
+                    string selected_element = listBox.SelectedItem.ToString();
+
+                    //selects and scrolls to appropriate item
+                    int ChosenIndex = listBox.SelectedIndex;
+                    listBox2.SelectedIndex = ChosenIndex;
+                    listBox2.ScrollIntoView(listBox2.Items[listBox.SelectedIndex]);
+
+                    //stationary
+                    String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group1_verbs_Jap.txt");
+                    String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group2_verbs_Jap.txt");
+                    String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group3_verbs_Jap.txt");
+
+                    //laptop
+                    //String[] grp1_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group1_verbs.txt");
+                    //String[] grp2_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group2_verbs.txt");
+                    //String[] grp3_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group3_verbs.txt");
+
+                    int TotalLenght = grp1_Tmp.Length + grp2_Tmp.Length + grp3_Tmp.Length;
+
+                    for (int i = 0; i < TotalLenght; i++)
+                    {
+                        if (grp1_Tmp.Contains(selected_element))
+                        {
+                            group1_verb.IsChecked = true;
+                            group2_verb.IsChecked = false;
+                            group3_verb.IsChecked = false;
+                        }
+                        if (grp2_Tmp.Contains(selected_element))
+                        {
+                            group1_verb.IsChecked = false;
+                            group2_verb.IsChecked = true;
+                            group3_verb.IsChecked = false;
+                        }
+                        if (grp3_Tmp.Contains(selected_element))
+                        {
+                            group1_verb.IsChecked = false;
+                            group2_verb.IsChecked = false;
+                            group3_verb.IsChecked = true;
+                        }
+                    }
+                }
+            }
         }
 
 

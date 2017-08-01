@@ -1,0 +1,8 @@
+(Grp1 particle for action place)
+(Grp1 particle for direct object)
+(Grp3 particle for questions)
+(Grp2 particle for topic)
+(Grp1 particle for direction)
+(Grp1 particle for noun+noun)
+(Grp2 particle for noun+verb, positive and negative)
+(Grp1 particle for action)
