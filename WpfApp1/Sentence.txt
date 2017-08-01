@@ -2,3 +2,4 @@
 alice がごはん をたべます
 aliceがしょくどうへいきます
 ｱﾘｽがごはんをたべます。
+hello test tetxt
