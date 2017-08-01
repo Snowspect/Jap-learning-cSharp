@@ -1,0 +1,22 @@
+﻿~が´+~は　(illegal combination - use は)
+~が+~も　(illegal combination - use も)
+~を+~は　(illegal combination - use は)
+time+object+を+verb
+(person)+noun+は+verb
+place+particle+verb
+person+は+verb 
+person+が+verb
+noun+と+noun+を+verb
+noun+は+だれ+が+verb
+place+へ+は+だれ+が+verb
+person+は+time+place+へ+verb
+time+person+は+object+を+verb
+person+noun+は+verb
+person+は+なに+を+verb+か
+person+は+どこ+へ+verb+か
+person+は+time+object+を+verb
+person+は+place+で+object+を+verb
+person+は+object+を+verb。　noun+も+verb
+person+は+place+へ+verb。　place+へも+verb
+person+は+object+を+verb。　noun+は+verb
+person+は+place+へ+verb。　place+へは+verb

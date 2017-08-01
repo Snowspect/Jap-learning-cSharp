@@ -1,0 +1,4 @@
+﻿-ます		(polite form positive, present)
+-ません		(polite form negative, present)
+-ました		(polite form positive, past)
+-ませんでした	(polite form past, negative)
