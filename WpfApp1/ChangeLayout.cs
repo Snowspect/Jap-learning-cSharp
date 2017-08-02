@@ -8,7 +8,9 @@ namespace WpfApp1
 {
     class ChangeLayout
     {
-        //changes layout of listboxes
+        /// <summary>
+        // method for changing layout of listboxes
+        /// </summary>
         public void ChangeListBoxLayout(Boolean p)
         {
             if(p == true)

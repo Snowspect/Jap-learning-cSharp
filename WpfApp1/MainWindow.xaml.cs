@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace WpfApp1
 {
@@ -10,11 +12,17 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        // starts the whole thing up
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        // small tasks to handle when the window opens up, such as hide certain boxes
+        /// </summary>
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Hide_Names();
@@ -365,10 +373,36 @@ namespace WpfApp1
             RadioBt.CheckifChecked();
         }
 
-        // no purpose
+        /// <summary>
+        // Hides hint text when text entered in japanese input box
+        /// </summary>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // holds no purpose
+            Boolean focused = InputSentence.IsFocused;
+            if (InputSentence.Text.Length > 0)
+            {
+                Japan_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                Japan_Pre_text.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        // Hides hint text when text entered in english input box
+        /// </summary>
+        private void TextBox_TextChanged_Eng(object sender, TextChangedEventArgs e)
+        {
+            Boolean focused = InputSentence_Eng.IsFocused;
+            if (InputSentence_Eng.Text.Length > 0)
+            {
+                English_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                English_Pre_text.Visibility = System.Windows.Visibility.Visible;
+            }
         }
 
         /// summary
@@ -431,7 +465,7 @@ namespace WpfApp1
                 {
                     WhatVerbGroup();
                 }
-                if(Sentence_Pattern.IsChecked == true)
+                if (Sentence_Pattern.IsChecked == true)
                 {
                     ShowOrChangePatternBox(3);
                 }
@@ -516,19 +550,21 @@ namespace WpfApp1
         /// </summary>
         private void ShowOrChangePatternBox(int Action)
         {
-            if(Action == 1)
+            if (Action == 1)
             {
                 Pattern_Box.Visibility = System.Windows.Visibility.Visible;
             }
-            else if(Action == 2)
+            else if (Action == 2)
             {
                 Pattern_Box.Visibility = System.Windows.Visibility.Collapsed;
             }
-            else if(Action == 3)
+            else if (Action == 3)
             {
                 String pattern_Tmp = listBox.SelectedItem.ToString();
                 Pattern_Box.Content = pattern_Tmp;
             }
         }
+
+
     }
 }

@@ -8,6 +8,9 @@ namespace WpfApp1
 {
     class ClearAndInput
     {
+        /// <summary>
+        // method for displaying the rest of the word groups.
+        /// </summary>
         public void ClearListAndInputValues(String txt)
         {
             string[] category_Display_Jap = { };
@@ -38,8 +41,9 @@ namespace WpfApp1
 
             }
         }
-        
-        //special method just for verb button
+        /// <summary>
+        // method for displaying all 3 verb groups
+        /// </summary>
         public void ClearListAndInputValuesForVerbs(String txt1, String txt2, String txt3)
         {
             //clear listbox

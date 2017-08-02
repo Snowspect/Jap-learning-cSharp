@@ -6,13 +6,10 @@ using WpfApp1;
 /// This class holds the function of writing to the correct files when information is entered and submitted
 /// </summary>
 public class RadioButtonClass
-    {
-    // just a random beginning class
-        public RadioButtonClass()
-        {
-        }
-
+{
+    /// <summary>
     // method for checking what radiobutton is pressed what element is pressed.
+    /// </summary>
     public void CheckifChecked()
     {
         if (((MainWindow)System.Windows.Application.Current.MainWindow).Verb.IsChecked == true)
@@ -67,19 +64,31 @@ public class RadioButtonClass
             Insert_element("Users");
         }
     }
-      
-    
-    // method for writing to file.
-        private void Insert_element(string category)
-        {
+
+
+    /// <summary>
+    // Method for writing to files
+    /// </summary>
+    private void Insert_element(string category)
+    {
         //stationary
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + category + ".txt", true))
-            //laptop
-            //using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + category + ".txt", true))
+        //writes the japanese input into the file.
+        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + category + "_Jap.txt", true))
+
+        //laptop
+        //using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + category + ".txt", true))
         {
             string Texter = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence.Text;
+
             file.WriteLine(Texter);
             ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence.Text = "";
         }
+        //writes the english input into a file
+        using (System.IO.StreamWriter file2 = new System.IO.StreamWriter(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + category + "_Eng.txt", true))
+        {
+            string Texter = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Text;
+            file2.WriteLine(Texter);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Text = "";
         }
     }
+}
