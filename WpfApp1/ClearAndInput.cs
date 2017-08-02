@@ -8,10 +8,6 @@ namespace WpfApp1
 {
     class ClearAndInput
     {
-        public ClearAndInput()
-        {
-        }
-
         public void ClearListAndInputValues(String txt)
         {
             string[] category_Display_Jap = { };
@@ -57,11 +53,12 @@ namespace WpfApp1
             String[] group2_Verbs_Display_Eng = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + txt2 + "_Eng.txt");
             String[] group3_Verbs_Display_Eng = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + txt3 + "_Eng.txt");
 
-
-
-            //String[] group1_Verbs_Display = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt1 + ".txt");
-            //String[] group2_Verbs_Display = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt2 + ".txt");
-            //String[] group3_Verbs_Display = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt3 + ".txt");
+            //String[] group1_Verbs_Display_Jap = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt1 + "_Jap.txt");
+            //String[] group2_Verbs_Display_Jap = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt2 + "_Jap.txt");
+            //String[] group3_Verbs_Display_Jap = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt3 + "_Jap.txt");
+            //String[] group1_Verbs_Display_Eng = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt1 + "_Eng.txt");
+            //String[] group2_Verbs_Display_Eng = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt2 + "_Eng.txt");
+            //String[] group3_Verbs_Display_Eng = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\" + txt3 + "_Eng.txt");
 
             //display content
             for (int i = 0; i < group1_Verbs_Display_Jap.Length; i++)

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChangeLayout.cs" />
     <Compile Include="ClearAndInput.cs" />
     <Compile Include="RadioButtonClass.xaml.cs" />
     <Page Include="MainWindow.xaml">

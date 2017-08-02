@@ -32,7 +32,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Background="Ivory" CornerRadius="3" HorizontalAlignment="Left" Height="30" Margin="74,296,0,0" VerticalAlignment="Top" Width="223" Grid.ColumnSpan="2"/>
         <RadioButton x:Name="Special_cases" Content="Specials" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="79,296,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.059,0.8" Checked="Special_cases_Checked" Height="28" Width="218" FontFamily="Yu Gothic UI Light" FontSize="18" Grid.ColumnSpan="2"/>
         <Button x:Name="Correct" Content="Input" HorizontalAlignment="Left" Margin="800,576,0,0" VerticalAlignment="Top" Width="86" Click="Correct_Click" Height="42" Grid.Column="1"/>
-        <TextBox x:Name="InputSentence" Background="Ivory"  HorizontalAlignment="Left" Height="156" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="927" Margin="76,558,0,0" TextChanged="textBox_TextChanged" FontSize="24" FontFamily="Yu Gothic UI Light" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="InputSentence" Background="Ivory"  HorizontalAlignment="Left" Height="156" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="927" Margin="76,558,0,0" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Yu Gothic UI Light" Grid.ColumnSpan="2"/>
         <CheckBox x:Name="group1_verb" Content="-える/-いる =　-え/-い+ます" HorizontalAlignment="Left" Margin="48,79,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <CheckBox x:Name="group2_verb" Content="-う = -います" HorizontalAlignment="Left" Margin="48,99,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <CheckBox x:Name="group3_verb" Content="irregular" HorizontalAlignment="Left" Margin="48,119,0,0" VerticalAlignment="Top" Grid.Column="1"/>
@@ -45,5 +45,6 @@
         <ListBox x:Name="listBox2" Grid.Column="1" HorizontalAlignment="Left" Height="390" Margin="613,75,0,0" VerticalAlignment="Top" Width="297" SelectionChanged="listBox2_SelectionChanged" FontSize="20" FontFamily="Yu Gothic UI Light"/>
         <TextBlock x:Name="Japanese_Headline" Grid.Column="1" HorizontalAlignment="Left" Margin="275,42,0,0" TextWrapping="Wrap" Text="にほご" VerticalAlignment="Top" Height="28" Width="143" FontSize="20"/>
         <TextBlock x:Name="Translate_Headline" Grid.Column="1" HorizontalAlignment="Left" Margin="613,42,0,0" TextWrapping="Wrap" Text="English" VerticalAlignment="Top" Height="28" Width="143" FontSize="20"/>
+        <Label x:Name ="Pattern_Box" Content="Chosen sentence pattern" HorizontalAlignment="Left" BorderBrush="Cornsilk" Background="White" BorderThickness="3" Margin="76,511,0,0" VerticalAlignment="Top" Width="927" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
