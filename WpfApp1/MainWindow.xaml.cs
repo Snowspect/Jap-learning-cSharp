@@ -236,7 +236,6 @@ namespace WpfApp1
             Hide_verbgroups();
             Hide_Names();
             //see method for explanation of parameter "1"
-            ShowOrChangePatternBox(1);
         }
 
         /// summary
@@ -467,7 +466,7 @@ namespace WpfApp1
                 }
                 if (Sentence_Pattern.IsChecked == true)
                 {
-                    ShowOrChangePatternBox(3);
+                    ShowOrChangePatternBox();
                 }
             }
         }
@@ -502,7 +501,7 @@ namespace WpfApp1
 
         /// summary
         //pulls entire japanese word list out and checks what group is belongs too.
-        /// summary 
+        /// summary
         private void WhatVerbGroup()
         {
 
@@ -547,24 +546,72 @@ namespace WpfApp1
         /// <summary>
         // Shows/Hide pattern box and copies selected element down into it.
         // takes int argument 1, 2 and 3
+        // 
         /// </summary>
-        private void ShowOrChangePatternBox(int Action)
+        private void ShowOrChangePatternBox()
         {
-            if (Action == 1)
-            {
-                Pattern_Box.Visibility = System.Windows.Visibility.Visible;
-            }
-            else if (Action == 2)
-            {
-                Pattern_Box.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else if (Action == 3)
-            {
-                String pattern_Tmp = listBox.SelectedItem.ToString();
-                Pattern_Box.Content = pattern_Tmp;
-            }
+            // pull example list out of file and get ready to display
+            String[] category_Display_Example = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\Sentence_Pattern_Eng.txt");
+            // get index of pattern selected
+            int example_Index = listBox.SelectedIndex;
+
+            // display pattern in top label of two labels.
+            String pattern_Tmp = listBox.SelectedItem.ToString();
+            Pattern_Box.Content = pattern_Tmp;
+
+            Pattern_Box_Example.Content = category_Display_Example[example_Index];
         }
 
 
+
+        private void Level_1_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_2_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_3_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_4_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_5_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_6_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_7_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_8_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_9_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_FM_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
