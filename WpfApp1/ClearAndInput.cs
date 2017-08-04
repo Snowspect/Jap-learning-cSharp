@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
 namespace WpfApp1
 {
     class ClearAndInput
@@ -13,6 +13,20 @@ namespace WpfApp1
         /// </summary>
         public void ClearListAndInputValues(String txt)
         {
+            //////clear listbox
+            ////((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Clear();
+            ////((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Clear();
+
+            ////SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
+            ////con.Open();
+            ////SqlCommand cmd = new SqlCommand("select * from noun",con);
+            ////SqlDataReader dr = cmd.ExecuteReader();
+
+            ////while (dr.Read())
+            ////{
+            ////    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(0));
+            ////}
+
             string[] category_Display_Jap = { };
             string[] category_Display_Eng = { };
 
@@ -29,7 +43,7 @@ namespace WpfApp1
             //display content
             for (int i = 0; i < category_Display_Jap.Length; i++)
             {
-                if(txt.Equals("Sentence_Pattern") || txt.Equals("Conjugation"))
+                if (txt.Equals("Sentence_Pattern") || txt.Equals("Conjugation"))
                 {
                     ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(category_Display_Jap[i]);
                 }
