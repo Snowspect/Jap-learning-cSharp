@@ -55,6 +55,10 @@
         <RadioButton x:Name="Kanjis" Content="Kanji" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="65,366,0,0" VerticalAlignment="Top" Checked="Kanji_Checked" Height="32" Width="218" FontFamily="Yu Gothic UI Light" FontSize="18" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Border x:Name="Name_Border" BorderBrush="Black" Background="Ivory" BorderThickness="1" CornerRadius="3" HorizontalAlignment="Left" Height="30" Margin="20,109,0,0" VerticalAlignment="Top" Width="136" Grid.Column="2" Grid.ColumnSpan="2"/>
         <RadioButton x:Name="Name" Content="Names" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="30,107,0,0" VerticalAlignment="Top" Checked="Name_Checked" Height="31" Width="126" FontFamily="Yu Gothic UI Light" FontSize="18" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Border x:Name="object_Border" BorderBrush="Black" Background="Ivory" BorderThickness="1" CornerRadius="3" HorizontalAlignment="Left" Height="30" Margin="20,144,0,0" VerticalAlignment="Top" Width="136" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <RadioButton x:Name="Object" Content="Objects" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="30,143,0,0" VerticalAlignment="Top" Checked="Object_Checked" Height="31" Width="126" FontFamily="Yu Gothic UI Light" FontSize="18" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Border x:Name="Places_Border" BorderBrush="Black" Background="Ivory" BorderThickness="1" CornerRadius="3" HorizontalAlignment="Left" Height="30" Margin="20,179,0,0" VerticalAlignment="Top" Width="136" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <RadioButton x:Name="Places" Content="Places" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="30,177,0,0" VerticalAlignment="Top" Checked="Place_Checked" Height="31" Width="126" FontFamily="Yu Gothic UI Light" FontSize="18" Grid.Column="2" Grid.ColumnSpan="2"/>
         <ListBox x:Name="listBox2" Grid.Column="3" HorizontalAlignment="Left" Height="390" Margin="475,75,0,0" VerticalAlignment="Top" Width="298" SelectionChanged="listBox2_SelectionChanged" FontSize="20" FontFamily="Yu Gothic UI Light"/>
         <TextBlock x:Name="Japanese_Headline" Grid.Column="3" HorizontalAlignment="Left" Margin="141,42,0,0" TextWrapping="Wrap" Text="にほご" VerticalAlignment="Top" Height="28" Width="144" FontSize="20"/>
         <TextBlock x:Name="Translate_Headline" Grid.Column="3" HorizontalAlignment="Left" Margin="475,42,0,0" TextWrapping="Wrap" Text="English" VerticalAlignment="Top" Height="28" Width="144" FontSize="20"/>
@@ -90,5 +94,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.7"/>
             </Label.Background>
         </Label>
+        <Label x:Name="Katakana_label" Content="Katakana Equivelant" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Cornsilk" Background="White" Margin="164,412,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="1.228,-0.115" Grid.ColumnSpan="2"/>
+        <Label x:Name="Katakana_input" Content="カタカナ" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Cornsilk" Background="White" Margin="164,443,0,0" VerticalAlignment="Top" Width="284" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

@@ -13,7 +13,7 @@ namespace WpfApp1
         /// </summary>
         public void ChangeListBoxLayout(Boolean p)
         {
-            if(p == true)
+            if (p == true)
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Visibility = System.Windows.Visibility.Collapsed;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Width = 640;
@@ -24,6 +24,22 @@ namespace WpfApp1
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Visibility = System.Windows.Visibility.Visible;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Width = 288;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).Translate_Headline.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+        /// <summary>
+        // method for displaying katakana equivelants.
+        /// </summary>
+        public void DisplayKatakanaEquivelant(Boolean p)
+        {
+            if (p == true)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Visibility = System.Windows.Visibility.Visible;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_label.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Visibility = System.Windows.Visibility.Collapsed;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_label.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 

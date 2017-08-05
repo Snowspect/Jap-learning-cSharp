@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Data.SqlClient;
 
 namespace WpfApp1
 {
@@ -25,6 +26,8 @@ namespace WpfApp1
         /// </summary>
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ChangeLayout chng = new ChangeLayout();
+            chng.DisplayKatakanaEquivelant(false);
             Hide_Names();
             Hide_verbgroups();
         }
@@ -80,6 +83,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -112,6 +116,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(true);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -140,6 +145,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -169,6 +175,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(true);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -198,6 +205,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -227,6 +235,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(true);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -257,6 +266,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -285,6 +295,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -312,6 +323,7 @@ namespace WpfApp1
 
             ChangeLayout chng = new ChangeLayout();
             chng.ChangeListBoxLayout(false);
+            chng.DisplayKatakanaEquivelant(false);
 
             //method for retrieving content from texfile(s)
             ClearAndInput clin = new ClearAndInput();
@@ -443,6 +455,10 @@ namespace WpfApp1
             //checks if an item is actually selected and mark correct check box based on selected verb.
             if (listBox.SelectedIndex != -1)
             {
+                //connect to database
+                SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
+                con.Open();
+
                 //select item and check what verb group it belongs to
                 string selected_element = listBox.SelectedItem.ToString();
 
@@ -467,6 +483,42 @@ namespace WpfApp1
                 if (Sentence_Pattern.IsChecked == true)
                 {
                     ShowOrChangePatternBox();
+                }
+                if (Name.IsChecked == true)
+                {
+                    //find the equivalent katakana if it exists.
+                    String chosenIndexNoun = listBox.SelectedItem.ToString();
+
+                    SqlCommand cmd = new SqlCommand("select * from users where user_hira = N'" + chosenIndexNoun + "'", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        Katakana_input.Content = dr.GetString(3);
+                    }
+                    dr.Close();
+                }
+                else if(Noun.IsChecked == true)
+                {
+                    //find the equivalent katakana if it exists.
+                    String chosenIndexNoun = listBox.SelectedItem.ToString();
+
+                    SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + chosenIndexNoun + "'", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        Katakana_input.Content = dr.GetString(3);
+                    }
+                    dr.Close();
+
+                    SqlCommand cmd2 = new SqlCommand("select * from noun_place where place_hira = N'" + chosenIndexNoun + "'", con);
+                    SqlDataReader dr2 = cmd2.ExecuteReader();
+                    while (dr2.Read())
+                    {
+                        Katakana_input.Content = dr2.GetString(3);
+                    }
+                    dr2.Close();
                 }
             }
         }
@@ -610,6 +662,16 @@ namespace WpfApp1
         }
 
         private void Level_FM_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Object_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Place_Checked(object sender, RoutedEventArgs e)
         {
 
         }

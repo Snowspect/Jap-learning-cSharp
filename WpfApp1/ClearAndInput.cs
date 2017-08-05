@@ -13,47 +13,111 @@ namespace WpfApp1
         /// </summary>
         public void ClearListAndInputValues(String txt)
         {
-            //////clear listbox
-            ////((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Clear();
-            ////((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Clear();
-
-            ////SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
-            ////con.Open();
-            ////SqlCommand cmd = new SqlCommand("select * from noun",con);
-            ////SqlDataReader dr = cmd.ExecuteReader();
-
-            ////while (dr.Read())
-            ////{
-            ////    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(0));
-            ////}
-
-            string[] category_Display_Jap = { };
-            string[] category_Display_Eng = { };
-
+            SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
+            con.Open();
             //clear listbox
             ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Clear();
             ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Clear();
 
-            category_Display_Jap = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + txt + "_Jap.txt");
-            category_Display_Eng = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + txt + "_Eng.txt");
-
-
-            //string[] category_Display = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\"+txt+".txt");
-
-            //display content
-            for (int i = 0; i < category_Display_Jap.Length; i++)
+            if(txt.Equals("Users"))
             {
-                if (txt.Equals("Sentence_Pattern") || txt.Equals("Conjugation"))
-                {
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(category_Display_Jap[i]);
-                }
-                else
-                {
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(category_Display_Jap[i]);
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(category_Display_Eng[i]);
-                }
+                SqlCommand cmd = new SqlCommand("select * from users", con);
+                SqlDataReader dr = cmd.ExecuteReader();
 
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
             }
+            if(txt.Equals("Noun"))
+            {
+                SqlCommand cmd = new SqlCommand("select * from noun_object", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from noun_place", con);
+                dr = cmd.ExecuteReader();
+
+                while(dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
+            }
+            if(txt.Equals("Object"))
+            {
+                SqlCommand cmd = new SqlCommand("select * from noun_object", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
+            }
+            if (txt.Equals("Places"))
+            {
+                SqlCommand cmd = new SqlCommand("select * from noun_place", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
+            }
+            if(txt.Equals("Time"))
+            {
+                SqlCommand cmd = new SqlCommand("select * from week_time", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
+            }
+
+
+            //string[] category_Display_Jap = { };
+            //string[] category_Display_Eng = { };
+
+            ////clear listbox
+            //((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Clear();
+            //((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Clear();
+
+            //category_Display_Jap = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + txt + "_Jap.txt");
+            //category_Display_Eng = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\" + txt + "_Eng.txt");
+
+
+            ////string[] category_Display = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\"+txt+".txt");
+
+            ////display content
+            //for (int i = 0; i < category_Display_Jap.Length; i++)
+            //{
+            //    if (txt.Equals("Sentence_Pattern") || txt.Equals("Conjugation"))
+            //    {
+            //        ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(category_Display_Jap[i]);
+            //    }
+            //    else
+            //    {
+            //        ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(category_Display_Jap[i]);
+            //        ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(category_Display_Eng[i]);
+            //    }
+
+            //}
         }
         /// <summary>
         // method for displaying all 3 verb groups
