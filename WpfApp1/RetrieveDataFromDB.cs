@@ -101,25 +101,69 @@ namespace WpfApp1
                 }
                 dr.Close();
             }
-            
             con.Close();
         }
 
         public void RetrieveKatakanaData(String txt)
         {
+            DatabaseCon db = new DatabaseCon();
+
+            SqlConnection con = new SqlConnection(db.DBCon());
+            con.Open();
+
             String SelectedNoun = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
 
-            DatabaseCon db = new DatabaseCon();
-            db.DBCon(true);
-            SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + SelectedNoun + "'", db.con);
-            SqlDataReader dr = cmd.ExecuteReader();
-
-            while (dr.Read())
+            // checks for katakana equivelants in the noun tab
+            if (txt.Equals("Noun_kata"))
             {
-                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr.GetString(3);
+                SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + SelectedNoun + "'", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr.GetString(3);
+                }
+                dr.Close();
+
+                SqlCommand cmd2 = new SqlCommand("select * from noun_place where place_hira = N'" + SelectedNoun + "'", con);
+                SqlDataReader dr2 = cmd2.ExecuteReader();
+                while (dr2.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr2.GetString(3);
+                }
+                dr2.Close();
             }
-            dr.Close();
-            db.DBCon(false);
+            // --||-- in the "names" tab
+            if (txt.Equals("Users_kata"))
+            {
+                //find the equivalent katakana if it exists.
+                String chosenIndexNoun = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
+
+                SqlCommand cmd = new SqlCommand("select * from users where user_hira = N'" + chosenIndexNoun + "'", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr.GetString(3);
+                }
+                dr.Close();
+            }
+            // --||-- in the objects tab
+            if (txt.Equals("Object_kata"))
+            {
+                //find the equivalent katakana if it exists.
+                String chosenIndexNoun = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
+
+                SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + chosenIndexNoun + "'", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr.GetString(3);
+                }
+                dr.Close();
+            }
+
         }
         /// <summary>
         // method for displaying all 3 verb groups
@@ -136,7 +180,7 @@ namespace WpfApp1
             SqlCommand cmd = new SqlCommand("select * from verb_groups", con);
             SqlDataReader dr = cmd.ExecuteReader();
 
-            while(dr.Read())
+            while (dr.Read())
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));

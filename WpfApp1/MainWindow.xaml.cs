@@ -300,6 +300,8 @@ namespace WpfApp1
                 SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
                 con.Open();
 
+                RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+
                 //select item and check what verb group it belongs to
                 string selected_element = listBox.SelectedItem.ToString();
 
@@ -327,43 +329,16 @@ namespace WpfApp1
                 }
                 if (Name.IsChecked == true)
                 {
-                    //find the equivalent katakana if it exists.
-                    String chosenIndexNoun = listBox.SelectedItem.ToString();
 
-                    SqlCommand cmd = new SqlCommand("select * from users where user_hira = N'" + chosenIndexNoun + "'", con);
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        Katakana_input.Content = dr.GetString(3);
-                    }
-                    dr.Close();
+                    rtd.RetrieveKatakanaData("Users_kata");
                 }
                 else if (Noun.IsChecked == true)
                 {
-                    //find the equivalent katakana if it exists.
-                    String SelectedNoun = listBox.SelectedItem.ToString();
-
-                    SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + SelectedNoun + "'", con);
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        Katakana_input.Content = dr.GetString(3);
-                    }
-                    dr.Close();
-
-                    SqlCommand cmd2 = new SqlCommand("select * from noun_place where place_hira = N'" + SelectedNoun + "'", con);
-                    SqlDataReader dr2 = cmd2.ExecuteReader();
-                    while (dr2.Read())
-                    {
-                        Katakana_input.Content = dr2.GetString(3);
-                    }
-                    dr2.Close();
+                    rtd.RetrieveKatakanaData("Noun_kata");
                 }
-                else if (Name.IsChecked == true)
+                else if (Object.IsChecked == true)
                 {
-
+                    rtd.RetrieveKatakanaData("Object_kata");
                 }
             }
         }
