@@ -26,19 +26,18 @@ namespace WpfApp1
         /// </summary>
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ChangeLayout chng = new ChangeLayout();
-            chng.DisplayKatakanaEquivelant(false);
-            Hide_Names();
-            Hide_verbgroups();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
         // LISTBOX LEFT
         // method for listbox interaction + selecting corresponding element in other listbox
         /// summary 
-        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ClearAndInput clinCheckVerbGroup = new ClearAndInput();
             //constantly copyiing. not good solution.. can't get ctrl+c to work...
             System.Windows.Clipboard.SetText(string.Join(Environment.NewLine, listBox.SelectedItems.OfType<string>().ToArray()));
 
@@ -50,10 +49,12 @@ namespace WpfApp1
         // LISTBOX RIGHT
         // method for listbox interaction + selecting corresponding element in other listbox
         /// summary 
-        private void listBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //constantly copyiing. not good solution.. can't get ctrl+c to work...
             System.Windows.Clipboard.SetText(string.Join(Environment.NewLine, listBox.SelectedItems.OfType<string>().ToArray()));
+
+            //check the checkbox for verb group.
             CheckSelectAndMarkGroupRightListbox();
         }
 
@@ -63,33 +64,20 @@ namespace WpfApp1
         /// summary 
         public void Verb_Checked(object sender, RoutedEventArgs e)
         {
-            // get verbs from list and return in list-box
-            Show_verbgroups();
-
             group1_verb.IsChecked = false;
             group2_verb.IsChecked = false;
             group3_verb.IsChecked = false;
 
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = true;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValuesForVerbs("group1_verbs", "group2_verbs", "group3_verbs");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Verbs");
 
-            Hide_Names();
+            //change layout of window
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(true);
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -99,31 +87,17 @@ namespace WpfApp1
         private void Noun_Checked(object sender, RoutedEventArgs e)
         {
 
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = true;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            //display 
-            Name.Visibility = System.Windows.Visibility.Visible;
-            Name_Border.Visibility = System.Windows.Visibility.Visible;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(true);
+            ChangeLayout cl = new ChangeLayout();
+            //changes listbox size
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(true);
+            cl.Noun_Subcategories(true);
+            cl.Verb_Subcategories(false);
 
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Noun");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Noun");
 
-            //hide verb_group checkboxes (could't hide them otherwize for unknown reasons.
-            Hide_verbgroups();
         }
 
         /// summary
@@ -132,28 +106,15 @@ namespace WpfApp1
         /// summary 
         private void Particle_Checked(object sender, RoutedEventArgs e)
         {
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = true;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Particle");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Particle");
 
-            //hide verb_group checkboxes (could't hide them otherwize for unknown reasons.
-            Hide_verbgroups();
-            Hide_Names();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -162,28 +123,15 @@ namespace WpfApp1
         /// summary 
         private void Conjugation_Checked(object sender, RoutedEventArgs e)
         {
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = true;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(true);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Conjugation");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Conjugation");
 
-            //hide verb_group checkboxes (could't hide them otherwize for unknown reasons.
-            Hide_verbgroups();
-            Hide_Names();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(true);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -192,28 +140,15 @@ namespace WpfApp1
         /// summary 
         private void Number_Checked(object sender, RoutedEventArgs e)
         {
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = true;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Number");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Number");
 
-            //hide verb_group checkboxes (could't hide them otherwize for unknown reasons.
-            Hide_verbgroups();
-            Hide_Names();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -222,29 +157,15 @@ namespace WpfApp1
         /// summary 
         private void Sentence_Pattern_Checked(object sender, RoutedEventArgs e)
         {
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = true;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(true);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Sentence_Pattern");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Sentence_Pattern");
 
-            //hide verb_group checkboxes (could't hide them otherwize for unknown reasons.
-            Hide_verbgroups();
-            Hide_Names();
-            //see method for explanation of parameter "1"
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(true);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -253,27 +174,15 @@ namespace WpfApp1
         /// summary 
         private void Special_cases_Checked(object sender, RoutedEventArgs e)
         {
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = true;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Special_Cases");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Special_Cases");
 
-            Hide_verbgroups();
-            Hide_Names();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -282,27 +191,15 @@ namespace WpfApp1
         /// summary 
         private void Sentence_Checked(object sender, RoutedEventArgs e)
         {
-            /////////////////// set radiobutton values as active or not /////////////
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = true;
-            Kanjis.IsChecked = false;
+           //method for retrieving content from texfile(s)
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Sentence");
 
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(false);
-
-            //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Sentence");
-
-            Hide_verbgroups();
-            Hide_Names();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -311,26 +208,15 @@ namespace WpfApp1
         /// summary 
         private void Kanji_Checked(object sender, RoutedEventArgs e)
         {
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = true;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-            chng.DisplayKatakanaEquivelant(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("kanji");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("kanji");
 
-            Hide_verbgroups();
-            Hide_Names();
+            ChangeLayout cl = new ChangeLayout();
+            cl.Noun_Subcategories(false);
+            cl.Verb_Subcategories(false);
+            cl.ChangeListBoxLayout(false);
+            cl.DisplayKatakanaEquivelant(false);
         }
 
         /// summary
@@ -339,23 +225,9 @@ namespace WpfApp1
         /// summary 
         private void Name_Checked(object sender, RoutedEventArgs e)
         {
-            Verb.IsChecked = false;
-            Noun.IsChecked = false;
-            Particle.IsChecked = false;
-            Conjugation.IsChecked = false;
-            Number.IsChecked = false;
-            Sentence_Pattern.IsChecked = false;
-            Special_cases.IsChecked = false;
-            Sentence.IsChecked = false;
-            Kanjis.IsChecked = false;
-            Name.IsChecked = true;
-
-            ChangeLayout chng = new ChangeLayout();
-            chng.ChangeListBoxLayout(false);
-
             //method for retrieving content from texfile(s)
-            ClearAndInput clin = new ClearAndInput();
-            clin.ClearListAndInputValues("Users");
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Users");
         }
 
         /// <summary>
@@ -417,37 +289,6 @@ namespace WpfApp1
         }
 
         /// summary
-        // method for showing verbgroup checkboxes
-        /// summary 
-        private void Show_verbgroups()
-        {
-            if (Verb.IsChecked == true)
-            {
-                group1_verb.Visibility = System.Windows.Visibility.Visible;
-                group2_verb.Visibility = System.Windows.Visibility.Visible;
-                group3_verb.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
-
-        /// summary
-        // method for hiding verbgroup checkboxes
-        /// summary 
-        private void Hide_verbgroups()
-        {
-            group1_verb.Visibility = System.Windows.Visibility.Collapsed;
-            group2_verb.Visibility = System.Windows.Visibility.Collapsed;
-            group3_verb.Visibility = System.Windows.Visibility.Collapsed;
-        }
-        /// summary
-        // Method for hiding user name radiobutton
-        /// summary 
-        private void Hide_Names()
-        {
-            Name.Visibility = System.Windows.Visibility.Collapsed;
-            Name_Border.Visibility = System.Windows.Visibility.Collapsed;
-        }
-
-        /// summary
         // to focus item in listbox 2 when item chosen in listbox 1.
         /// summary 
         private void CheckSelectAndMarkGroupLeftListbox()
@@ -498,12 +339,12 @@ namespace WpfApp1
                     }
                     dr.Close();
                 }
-                else if(Noun.IsChecked == true)
+                else if (Noun.IsChecked == true)
                 {
                     //find the equivalent katakana if it exists.
-                    String chosenIndexNoun = listBox.SelectedItem.ToString();
+                    String SelectedNoun = listBox.SelectedItem.ToString();
 
-                    SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + chosenIndexNoun + "'", con);
+                    SqlCommand cmd = new SqlCommand("select * from noun_object where object_hira = N'" + SelectedNoun + "'", con);
                     SqlDataReader dr = cmd.ExecuteReader();
 
                     while (dr.Read())
@@ -512,13 +353,17 @@ namespace WpfApp1
                     }
                     dr.Close();
 
-                    SqlCommand cmd2 = new SqlCommand("select * from noun_place where place_hira = N'" + chosenIndexNoun + "'", con);
+                    SqlCommand cmd2 = new SqlCommand("select * from noun_place where place_hira = N'" + SelectedNoun + "'", con);
                     SqlDataReader dr2 = cmd2.ExecuteReader();
                     while (dr2.Read())
                     {
                         Katakana_input.Content = dr2.GetString(3);
                     }
                     dr2.Close();
+                }
+                else if (Name.IsChecked == true)
+                {
+
                 }
             }
         }
@@ -531,18 +376,10 @@ namespace WpfApp1
             //checks if an item is actually selected and mark correct check box based on selected verb.
             if (listBox2.SelectedIndex != -1)
             {
-
-                if (Conjugation.IsChecked == true || Sentence_Pattern.IsChecked == true)
-                {
-                    //do nothing
-                }
-                else
-                {
-                    //selects and scrolls to appropriate item
-                    int ChosenIndex = listBox2.SelectedIndex;
-                    listBox.SelectedIndex = ChosenIndex;
-                    listBox.ScrollIntoView(listBox.Items[listBox2.SelectedIndex]);
-                }
+                //selects and scrolls to appropriate item
+                int ChosenIndex = listBox2.SelectedIndex;
+                listBox.SelectedIndex = ChosenIndex;
+                listBox.ScrollIntoView(listBox.Items[listBox2.SelectedIndex]);
                 if (Verb.IsChecked == true)
                 {
                     //select item and check what verb group it belongs to
@@ -668,12 +505,23 @@ namespace WpfApp1
 
         private void Object_Checked(object sender, RoutedEventArgs e)
         {
-
+            //method for retrieving content from texfile(s)
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Object");
         }
 
         private void Place_Checked(object sender, RoutedEventArgs e)
         {
+            //method for retrieving content from texfile(s)
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Places");
+        }
 
+        private void Times_Checked(object sender, RoutedEventArgs e)
+        {
+            //method for retrieving content from texfile(s)
+            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            rtd.RetrieveData("Time");
         }
     }
 }

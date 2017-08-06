@@ -8,7 +8,7 @@ using WpfApp1;
 public class RadioButtonClass
 {
     /// <summary>
-    // method for checking what radiobutton is pressed what element is pressed.
+    // method for inputting data into files atm.
     /// </summary>
     public void CheckifChecked()
     {
