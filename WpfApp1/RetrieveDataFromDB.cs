@@ -101,6 +101,18 @@ namespace WpfApp1
                 }
                 dr.Close();
             }
+            if (txt.Equals("Particle"))
+            {
+                SqlCommand cmd = new SqlCommand("select * from particles", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add(dr.GetString(1));
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(2));
+                }
+                dr.Close();
+            }
             con.Close();
         }
 
@@ -112,7 +124,7 @@ namespace WpfApp1
             con.Open();
 
             String SelectedNoun = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
-
+            
             // checks for katakana equivelants in the noun tab
             if (txt.Equals("Noun_kata"))
             {
@@ -148,7 +160,7 @@ namespace WpfApp1
                 }
                 dr.Close();
             }
-            // --||-- in the objects tab
+            // --||--
             if (txt.Equals("Object_kata"))
             {
                 //find the equivalent katakana if it exists.
@@ -163,10 +175,40 @@ namespace WpfApp1
                 }
                 dr.Close();
             }
+            // --||--
+            if (txt.Equals("Times_kata"))
+            {
+                //find the equivalent katakana if it exists.
+                String chosenIndexNoun = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
 
+                SqlCommand cmd = new SqlCommand("select * from week_time where week_day_hira = N'" + chosenIndexNoun + "'", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr.GetString(3);
+                }
+                dr.Close();
+            }
+            // --||--
+            if (txt.Equals("Places_Kata"))
+            {
+                //find the equivalent katakana if it exists.
+                String chosenIndexNoun = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
+
+                SqlCommand cmd = new SqlCommand("select * from noun_place where place_hira = N'" + chosenIndexNoun + "'", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_input.Content = dr.GetString(3);
+                }
+                dr.Close();
+            }
         }
         /// <summary>
         // method for displaying all 3 verb groups
+        // not used atm.
         /// </summary>
         public void ClearListAndInputValuesForVerbs(String txt1, String txt2, String txt3)
         {

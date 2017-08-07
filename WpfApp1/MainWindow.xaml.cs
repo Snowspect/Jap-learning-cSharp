@@ -191,7 +191,7 @@ namespace WpfApp1
         /// summary 
         private void Sentence_Checked(object sender, RoutedEventArgs e)
         {
-           //method for retrieving content from texfile(s)
+            //method for retrieving content from texfile(s)
             RetrieveDataFromDB rtd = new RetrieveDataFromDB();
             rtd.RetrieveData("Sentence");
 
@@ -340,6 +340,14 @@ namespace WpfApp1
                 {
                     rtd.RetrieveKatakanaData("Object_kata");
                 }
+                else if (Times.IsChecked == true)
+                {
+                    rtd.RetrieveKatakanaData("Times_kata");
+                }
+                else if (Places.IsChecked == true)
+                {
+                    rtd.RetrieveKatakanaData("Places_kata");
+                }
             }
         }
 
@@ -352,9 +360,11 @@ namespace WpfApp1
             if (listBox2.SelectedIndex != -1)
             {
                 //selects and scrolls to appropriate item
+
                 int ChosenIndex = listBox2.SelectedIndex;
                 listBox.SelectedIndex = ChosenIndex;
                 listBox.ScrollIntoView(listBox.Items[listBox2.SelectedIndex]);
+
                 if (Verb.IsChecked == true)
                 {
                     //select item and check what verb group it belongs to
