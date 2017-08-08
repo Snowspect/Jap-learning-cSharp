@@ -15,6 +15,5 @@ namespace WpfApp1
         {
             return "server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True";
         }
-
     }
 }

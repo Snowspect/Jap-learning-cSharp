@@ -57,7 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="ChangeLayout.cs" />
     <Compile Include="DatabaseCon.cs" />
-    <Compile Include="RetrieveDataFromDB.cs" />
+    <Compile Include="DatabaseHandling.cs" />
     <Compile Include="RadioButtonClass.xaml.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

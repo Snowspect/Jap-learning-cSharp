@@ -21,9 +21,6 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        /// <summary>
-        // small tasks to handle when the window opens up, such as hide certain boxes
-        /// </summary>
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ChangeLayout cl = new ChangeLayout();
@@ -32,10 +29,6 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // LISTBOX LEFT
-        // method for listbox interaction + selecting corresponding element in other listbox
-        /// summary 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //constantly copyiing. not good solution.. can't get ctrl+c to work...
@@ -45,10 +38,6 @@ namespace WpfApp1
             CheckSelectAndMarkGroupLeftListbox();
         }
 
-        /// summary
-        // LISTBOX RIGHT
-        // method for listbox interaction + selecting corresponding element in other listbox
-        /// summary 
         private void ListBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //constantly copyiing. not good solution.. can't get ctrl+c to work...
@@ -58,19 +47,11 @@ namespace WpfApp1
             CheckSelectAndMarkGroupRightListbox();
         }
 
-        /// summary
-        // VERB RADIOBUTTON
-        // method for inputting Verbs
-        /// summary 
         public void Verb_Checked(object sender, RoutedEventArgs e)
         {
-            group1_verb.IsChecked = false;
-            group2_verb.IsChecked = false;
-            group3_verb.IsChecked = false;
-
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Verbs");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("verb_groups");
 
             //change layout of window
             ChangeLayout cl = new ChangeLayout();
@@ -80,13 +61,8 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // NOUN RADIOBUTTON
-        // method for inputting Nouns
-        /// summary 
         private void Noun_Checked(object sender, RoutedEventArgs e)
         {
-
             ChangeLayout cl = new ChangeLayout();
             //changes listbox size
             cl.ChangeListBoxLayout(false);
@@ -95,20 +71,16 @@ namespace WpfApp1
             cl.Verb_Subcategories(false);
 
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Noun");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("noun_object");
 
         }
 
-        /// summary
-        // PARTICLE RADIOBUTTON
-        // method for inputting Particles
-        /// summary 
         private void Particle_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Particle");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("particles");
 
             ChangeLayout cl = new ChangeLayout();
             cl.Noun_Subcategories(false);
@@ -117,32 +89,24 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // CONJUGATION RADIOBUTTON
-        // method for inputting Conjugations
-        /// summary 
         private void Conjugation_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Conjugation");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("conjugation");
 
             ChangeLayout cl = new ChangeLayout();
             cl.Noun_Subcategories(false);
             cl.Verb_Subcategories(false);
-            cl.ChangeListBoxLayout(true);
+            cl.ChangeListBoxLayout(false);
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // NUMBER RADIOBUTTON
-        // method for inputting Numbers
-        /// summary 
         private void Number_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Number");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("numbers");
 
             ChangeLayout cl = new ChangeLayout();
             cl.Noun_Subcategories(false);
@@ -151,15 +115,11 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // PATTERN RADIOBUTTON
-        // method for inputting Sentence patterns
-        /// summary 
         private void Sentence_Pattern_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Sentence_Pattern");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("patterns");
 
             ChangeLayout cl = new ChangeLayout();
             cl.Noun_Subcategories(false);
@@ -168,15 +128,11 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // SPECIAL RADIOBUTTON
-        // method for inputting special elements
-        /// summary 
         private void Special_cases_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Special_Cases");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("special");
 
             ChangeLayout cl = new ChangeLayout();
             cl.Noun_Subcategories(false);
@@ -185,15 +141,11 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // SENTENCE RADIOBUTTON
-        // method for inputting Sentences
-        /// summary 
         private void Sentence_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Sentence");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("sentences");
 
             ChangeLayout cl = new ChangeLayout();
             cl.Noun_Subcategories(false);
@@ -202,14 +154,10 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // KANJI RADIOBUTTON
-        // method for inputting Kanji
-        /// summary 
         private void Kanji_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+            DatabaseHandling rtd = new DatabaseHandling();
             rtd.RetrieveData("kanji");
 
             ChangeLayout cl = new ChangeLayout();
@@ -219,24 +167,17 @@ namespace WpfApp1
             cl.DisplayKatakanaEquivelant(false);
         }
 
-        /// summary
-        // USER RADIOBUTTON
-        // method for inputting user names
-        /// summary 
         private void Name_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Users");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("users");
         }
 
-        /// <summary>
-        // plan to make it remove element from database once that is implemented.
-        /// </summary>
-        private void incorrect_Click(object sender, RoutedEventArgs e)
+        private void Incorrect_Click(object sender, RoutedEventArgs e)
         {
             //put incorrect sentences into list with incorrect sentences
-            string Texter = InputSentence.Text;
+            string Texter = InputSentence_Jap.Text;
 
             //stationary
             System.IO.File.WriteAllText(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\Input.txt", Texter);
@@ -245,9 +186,6 @@ namespace WpfApp1
             System.IO.File.WriteAllText(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\Input.txt", Texter);
         }
 
-        /// summary
-        // method for writing to file
-        /// summary 
         private void Correct_Click(object sender, RoutedEventArgs e)
         {
             //put correct sentence into list with correct sentences
@@ -256,41 +194,8 @@ namespace WpfApp1
             RadioBt.CheckifChecked();
         }
 
-        /// <summary>
-        // Hides hint text when text entered in japanese input box
-        /// </summary>
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Boolean focused = InputSentence.IsFocused;
-            if (InputSentence.Text.Length > 0)
-            {
-                Japan_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else
-            {
-                Japan_Pre_text.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
 
-        /// <summary>
-        // Hides hint text when text entered in english input box
-        /// </summary>
-        private void TextBox_TextChanged_Eng(object sender, TextChangedEventArgs e)
-        {
-            Boolean focused = InputSentence_Eng.IsFocused;
-            if (InputSentence_Eng.Text.Length > 0)
-            {
-                English_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
-            }
-            else
-            {
-                English_Pre_text.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
 
-        /// summary
-        // to focus item in listbox 2 when item chosen in listbox 1.
-        /// summary 
         private void CheckSelectAndMarkGroupLeftListbox()
         {
             //checks if an item is actually selected and mark correct check box based on selected verb.
@@ -300,16 +205,16 @@ namespace WpfApp1
                 SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
                 con.Open();
 
-                RetrieveDataFromDB rtd = new RetrieveDataFromDB();
+                DatabaseHandling rtd = new DatabaseHandling();
 
                 //select item and check what verb group it belongs to
                 string selected_element = listBox.SelectedItem.ToString();
 
                 //only does something if conjugation or pattern is not checked
-                if (Conjugation.IsChecked == true || Sentence_Pattern.IsChecked == true)
+                if (Sentence_Pattern.IsChecked == true)
                 {
                     //do nothing
-                }
+                } //do nothing
                 else
                 {
                     //selects and scrolls to appropriate item
@@ -317,7 +222,6 @@ namespace WpfApp1
                     listBox2.SelectedIndex = ChosenIndex;
                     listBox2.ScrollIntoView(listBox2.Items[listBox.SelectedIndex]);
                 }
-
                 // checks what Verb group is marked and checks out checkboxes
                 if (Verb.IsChecked == true)
                 {
@@ -325,35 +229,34 @@ namespace WpfApp1
                 }
                 if (Sentence_Pattern.IsChecked == true)
                 {
-                    ShowOrChangePatternBox();
+                    Pattern_Box.Content = listBox.SelectedItem.ToString();
+                    rtd.FindPatternExample();
                 }
                 if (Name.IsChecked == true)
                 {
+                    rtd.RetrieveKatakanaData("users", "user_hira");
 
-                    rtd.RetrieveKatakanaData("Users_kata");
                 }
                 else if (Noun.IsChecked == true)
                 {
-                    rtd.RetrieveKatakanaData("Noun_kata");
+                    rtd.RetrieveKatakanaData("noun_place", "place_hira");
+                    rtd.RetrieveKatakanaData("noun_object", "object_hira");
                 }
                 else if (Object.IsChecked == true)
                 {
-                    rtd.RetrieveKatakanaData("Object_kata");
+                    rtd.RetrieveKatakanaData("noun_object", "object_hira");
                 }
                 else if (Times.IsChecked == true)
                 {
-                    rtd.RetrieveKatakanaData("Times_kata");
+                    rtd.RetrieveKatakanaData("week_time", "week_day_hira");
                 }
                 else if (Places.IsChecked == true)
                 {
-                    rtd.RetrieveKatakanaData("Places_kata");
+                    rtd.RetrieveKatakanaData("noun_place", "place_hira");
                 }
             }
         }
 
-        /// summary
-        // to focus item in listbox 1 when item chosen in listbox 2.
-        /// summary 
         private void CheckSelectAndMarkGroupRightListbox()
         {
             //checks if an item is actually selected and mark correct check box based on selected verb.
@@ -364,79 +267,8 @@ namespace WpfApp1
                 int ChosenIndex = listBox2.SelectedIndex;
                 listBox.SelectedIndex = ChosenIndex;
                 listBox.ScrollIntoView(listBox.Items[listBox2.SelectedIndex]);
-
-                if (Verb.IsChecked == true)
-                {
-                    //select item and check what verb group it belongs to
-                    WhatVerbGroup();
-                }
             }
         }
-
-        /// summary
-        //pulls entire japanese word list out and checks what group is belongs too.
-        /// summary
-        private void WhatVerbGroup()
-        {
-
-            string selected_element = listBox.SelectedItem.ToString();
-
-            //stationary
-            String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group1_verbs_Jap.txt");
-            String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group2_verbs_Jap.txt");
-            String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group3_verbs_Jap.txt");
-
-            //laptop
-            //String[] grp1_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group1_verbs.txt");
-            //String[] grp2_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group2_verbs.txt");
-            //String[] grp3_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group3_verbs.txt");
-
-            //the length stays the same nomatter whether eng or jap
-            int TotalLenght = grp1_Tmp.Length + grp2_Tmp.Length + grp3_Tmp.Length;
-
-            for (int i = 0; i < TotalLenght; i++)
-            {
-                if (grp1_Tmp.Contains(selected_element))
-                {
-                    group1_verb.IsChecked = true;
-                    group2_verb.IsChecked = false;
-                    group3_verb.IsChecked = false;
-                }
-                if (grp2_Tmp.Contains(selected_element))
-                {
-                    group1_verb.IsChecked = false;
-                    group2_verb.IsChecked = true;
-                    group3_verb.IsChecked = false;
-                }
-                if (grp3_Tmp.Contains(selected_element))
-                {
-                    group1_verb.IsChecked = false;
-                    group2_verb.IsChecked = false;
-                    group3_verb.IsChecked = true;
-                }
-            }
-        }
-
-        /// <summary>
-        // Shows/Hide pattern box and copies selected element down into it.
-        // takes int argument 1, 2 and 3
-        // 
-        /// </summary>
-        private void ShowOrChangePatternBox()
-        {
-            // pull example list out of file and get ready to display
-            String[] category_Display_Example = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\Sentence_Pattern_Eng.txt");
-            // get index of pattern selected
-            int example_Index = listBox.SelectedIndex;
-
-            // display pattern in top label of two labels.
-            String pattern_Tmp = listBox.SelectedItem.ToString();
-            Pattern_Box.Content = pattern_Tmp;
-
-            Pattern_Box_Example.Content = category_Display_Example[example_Index];
-        }
-
-
 
         private void Level_1_Checked(object sender, RoutedEventArgs e)
         {
@@ -491,22 +323,102 @@ namespace WpfApp1
         private void Object_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Object");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("noun_object");
         }
 
         private void Place_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Places");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("noun_place");
         }
 
         private void Times_Checked(object sender, RoutedEventArgs e)
         {
             //method for retrieving content from texfile(s)
-            RetrieveDataFromDB rtd = new RetrieveDataFromDB();
-            rtd.RetrieveData("Time");
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveData("week_time");
+        }
+
+        private void WhatVerbGroup()
+        {
+
+            string selected_element = listBox.SelectedItem.ToString();
+
+            //stationary
+            String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group1_verbs_Jap.txt");
+            String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group2_verbs_Jap.txt");
+            String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group3_verbs_Jap.txt");
+
+            //laptop
+            //String[] grp1_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group1_verbs.txt");
+            //String[] grp2_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group2_verbs.txt");
+            //String[] grp3_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group3_verbs.txt");
+
+            //the length stays the same nomatter whether eng or jap
+            int TotalLenght = grp1_Tmp.Length + grp2_Tmp.Length + grp3_Tmp.Length;
+
+            for (int i = 0; i < TotalLenght; i++)
+            {
+                if (grp1_Tmp.Contains(selected_element))
+                {
+                    group1_verb.IsChecked = true;
+                    group2_verb.IsChecked = false;
+                    group3_verb.IsChecked = false;
+                }
+                if (grp2_Tmp.Contains(selected_element))
+                {
+                    group1_verb.IsChecked = false;
+                    group2_verb.IsChecked = true;
+                    group3_verb.IsChecked = false;
+                }
+                if (grp3_Tmp.Contains(selected_element))
+                {
+                    group1_verb.IsChecked = false;
+                    group2_verb.IsChecked = false;
+                    group3_verb.IsChecked = true;
+                }
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Boolean focused = InputSentence_Jap.IsFocused;
+            if (InputSentence_Jap.Text.Length > 0)
+            {
+                Japan_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                Japan_Pre_text.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        private void TextBox_TextChanged_Eng(object sender, TextChangedEventArgs e)
+        {
+            Boolean focused = InputSentence_Eng.IsFocused;
+            if (InputSentence_Eng.Text.Length > 0)
+            {
+                English_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                English_Pre_text.Visibility = System.Windows.Visibility.Visible;
+            }
+        }
+
+        private void TextBox_TextChanged_Kata(object sender, TextChangedEventArgs e)
+        {
+            Boolean focused = InputSentence_Kata.IsFocused;
+            if (InputSentence_Kata.Text.Length > 0)
+            {
+                Katakana_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            else
+            {
+                Katakana_Pre_text.Visibility = System.Windows.Visibility.Visible;
+            }
         }
     }
 }

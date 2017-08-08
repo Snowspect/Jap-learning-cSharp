@@ -63,6 +63,10 @@ namespace WpfApp1
 
                 ((MainWindow)System.Windows.Application.Current.MainWindow).Times.Visibility = System.Windows.Visibility.Collapsed;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).Times_Border.Visibility = System.Windows.Visibility.Collapsed;
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_Input_Border.Visibility = System.Windows.Visibility.Collapsed;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_Pre_text.Visibility = System.Windows.Visibility.Collapsed;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Kata.Visibility = System.Windows.Visibility.Collapsed;
             }
             else if (p == true)
             {
@@ -77,6 +81,10 @@ namespace WpfApp1
 
                 ((MainWindow)System.Windows.Application.Current.MainWindow).Times.Visibility = System.Windows.Visibility.Visible;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).Times_Border.Visibility = System.Windows.Visibility.Visible;
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_Input_Border.Visibility = System.Windows.Visibility.Visible;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).Katakana_Pre_text.Visibility = System.Windows.Visibility.Visible;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Kata.Visibility = System.Windows.Visibility.Visible;
             }
         }
 
@@ -87,6 +95,10 @@ namespace WpfApp1
         {
             if (p == true)
             {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_verb.IsChecked = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group2_verb.IsChecked = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group3_verb.IsChecked = false;
+
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group1_verb.Visibility = System.Windows.Visibility.Visible;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group2_verb.Visibility = System.Windows.Visibility.Visible;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group3_verb.Visibility = System.Windows.Visibility.Visible;
