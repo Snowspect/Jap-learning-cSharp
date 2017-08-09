@@ -201,8 +201,8 @@ namespace WpfApp1
             //checks if an item is actually selected and mark correct check box based on selected verb.
             if (listBox.SelectedIndex != -1)
             {
-                //connect to database
-                SqlConnection con = new SqlConnection("server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True");
+                DatabaseCon db = new DatabaseCon();
+                SqlConnection con = new SqlConnection(db.DBCon());
                 con.Open();
 
                 DatabaseHandling rtd = new DatabaseHandling();
@@ -346,15 +346,15 @@ namespace WpfApp1
 
             string selected_element = listBox.SelectedItem.ToString();
 
-            //stationary
-            String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group1_verbs_Jap.txt");
-            String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group2_verbs_Jap.txt");
-            String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group3_verbs_Jap.txt");
+            ////stationary
+            //String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group1_verbs_Jap.txt");
+            //String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group2_verbs_Jap.txt");
+            //String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group3_verbs_Jap.txt");
 
             //laptop
-            //String[] grp1_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group1_verbs.txt");
-            //String[] grp2_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group2_verbs.txt");
-            //String[] grp3_Tmp = System.IO.File.ReadAllLines(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\group3_verbs.txt");
+            String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\group1_verbs_Jap.txt");
+            String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\group1_verbs_Jap.txt");
+            String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\group1_verbs_Jap.txt");
 
             //the length stays the same nomatter whether eng or jap
             int TotalLenght = grp1_Tmp.Length + grp2_Tmp.Length + grp3_Tmp.Length;

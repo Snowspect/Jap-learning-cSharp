@@ -87,10 +87,26 @@ namespace WpfApp1
             }
             else if (table.Equals("verb_groups"))
             {
-                if (true)
-                {
+                String jap_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text.ToString();
+                String eng_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Text.ToString();
 
+                if (((MainWindow)System.Windows.Application.Current.MainWindow).group1_choice.IsChecked == true)
+                {
+                    SqlCommand cmd = new SqlCommand("insert into " + table + "(" + column1 + "," + column2 + ",verb_group) values(N'" + jap_Input + "',N'" + eng_Input + "'," + 1 + ")", con);
+                    cmd.ExecuteNonQuery();
                 }
+                if (((MainWindow)System.Windows.Application.Current.MainWindow).group2_choice.IsChecked == true)
+                {
+                    SqlCommand cmd = new SqlCommand("insert into " + table + "(" + column1 + "," + column2 + ",verb_group) values(N'" + jap_Input + "',N'" + eng_Input + "'," + 2 + ")", con);
+                    cmd.ExecuteNonQuery();
+                }
+                if (((MainWindow)System.Windows.Application.Current.MainWindow).group3_choice.IsChecked == true)
+                {
+                    SqlCommand cmd = new SqlCommand("insert into " + table + "(" + column1 + "," + column2 + ",verb_group) values(N'" + jap_Input + "',N'" + eng_Input + "'," + 3 + ")", con);
+                    cmd.ExecuteNonQuery();
+                }
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Clear();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Clear();
             }
             else
             {
