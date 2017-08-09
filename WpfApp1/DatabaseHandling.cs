@@ -65,27 +65,41 @@ namespace WpfApp1
             }
             dr.Close();
         }
-        public void InsertData(String button, String table, String column1, String column2, String column3)
+        public void InsertData(String table, String column1, String column2, String column3)
         {
             DatabaseCon db = new DatabaseCon();
             SqlConnection con = new SqlConnection(db.DBCon());
             con.Open();
 
-            if (button.Equals("noun") || button.Equals("users") || button.Equals("object") || button.Equals("places") || button.Equals("times"))
+            if (table.Equals("users") || table.Equals("noun_object") || table.Equals("noun_place") || table.Equals("week_time"))
             {
-                String jap_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.ToString();
-                String eng_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.ToString();
-                String kata_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Kata.ToString();
+                String jap_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text.ToString();
+                String eng_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Text.ToString();
+                String kata_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Kata.Text.ToString();
 
                 SqlCommand cmd = new SqlCommand("insert into " + table + "(" + column1 + "," + column2 + "," + column3 + ") values(N'" + jap_Input + "', N'" + eng_Input + "',N'" + kata_Input + "')", con);
                 cmd.ExecuteNonQuery();
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Clear();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Clear();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Kata.Clear();
+
+            }
+            else if (table.Equals("verb_groups"))
+            {
+                if (true)
+                {
+
+                }
             }
             else
             {
-                String jap_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.ToString();
-                String eng_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.ToString();
+                String jap_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text.ToString();
+                String eng_Input = ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Text.ToString();
                 SqlCommand cmd = new SqlCommand("insert into " + table + "(" + column1 + "," + column2 + ") values(N'" + jap_Input + "',N'" + eng_Input + "')", con);
                 cmd.ExecuteNonQuery();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Clear();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Clear();
             }
         }
     }

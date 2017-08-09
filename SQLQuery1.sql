@@ -1,1 +1,16 @@
-﻿
+﻿insert into kanji(kanji_kanji, kanji_eng) values
+(N'一','ichi , one'),
+(N'二','ni, two)'),
+(N'三','san, three'),
+(N'四','shi, four'),
+(N'五','go, five'),
+(N'六','roku, six'),
+(N'七','shichi, seven'),
+(N'八','hachi, eight'),
+(N'九','kyuu, nine'),
+(N'十','jyuu, ten'),
+(N'百','hyaku, 100'),
+(N'千','sen, thousand'),
+(N'万','man, ten thousand'),
+(N'円','yen, japan currency'),
+(N'年','nen, year');

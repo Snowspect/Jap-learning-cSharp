@@ -101,5 +101,10 @@
         </Label>
         <Label x:Name="Katakana_label" Content="Katakana Equivelant" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Cornsilk" Background="White" Margin="164,412,0,0" VerticalAlignment="Top" Width="123" RenderTransformOrigin="1.228,-0.115" Grid.ColumnSpan="2"/>
         <Label x:Name="Katakana_input" Content="カタカナ" Grid.Column="1" HorizontalAlignment="Left" BorderBrush="Cornsilk" Background="White" Margin="164,443,0,0" VerticalAlignment="Top" Width="284" Grid.ColumnSpan="3"/>
+        <Grid Grid.Column="3" HorizontalAlignment="Left" Height="115" Margin="687,623,0,0" VerticalAlignment="Top" Width="193">
+            <RadioButton x:Name="group1_choice" Content="-える/-いる =　-え/-い+ます" Foreground="White" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="group2_choice" Content="-う = -います" Foreground="white" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="group3_choice" Content="Irregular" Foreground="White" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </Window>

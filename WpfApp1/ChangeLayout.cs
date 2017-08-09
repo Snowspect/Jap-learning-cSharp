@@ -102,12 +102,24 @@ namespace WpfApp1
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group1_verb.Visibility = System.Windows.Visibility.Visible;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group2_verb.Visibility = System.Windows.Visibility.Visible;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group3_verb.Visibility = System.Windows.Visibility.Visible;
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_choice.IsChecked = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_choice.IsChecked = false;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_choice.IsChecked = false;
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_choice.Visibility = System.Windows.Visibility.Visible;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group2_choice.Visibility = System.Windows.Visibility.Visible;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group3_choice.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group1_verb.Visibility = System.Windows.Visibility.Collapsed;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group2_verb.Visibility = System.Windows.Visibility.Collapsed;
                 ((MainWindow)System.Windows.Application.Current.MainWindow).group3_verb.Visibility = System.Windows.Visibility.Collapsed;
+
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_choice.Visibility = System.Windows.Visibility.Collapsed;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group2_choice.Visibility = System.Windows.Visibility.Collapsed;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group3_choice.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
     }
