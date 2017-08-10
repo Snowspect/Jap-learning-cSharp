@@ -225,7 +225,7 @@ namespace WpfApp1
                 // checks what Verb group is marked and checks out checkboxes
                 if (Verb.IsChecked == true)
                 {
-                    WhatVerbGroup();
+                    rtd.FindVerbGroup();
                 }
                 if (Sentence_Pattern.IsChecked == true)
                 {
@@ -339,47 +339,6 @@ namespace WpfApp1
             //method for retrieving content from texfile(s)
             DatabaseHandling rtd = new DatabaseHandling();
             rtd.RetrieveData("week_time");
-        }
-
-        private void WhatVerbGroup()
-        {
-
-            string selected_element = listBox.SelectedItem.ToString();
-
-            ////stationary
-            //String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group1_verbs_Jap.txt");
-            //String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group2_verbs_Jap.txt");
-            //String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\group3_verbs_Jap.txt");
-
-            //laptop
-            String[] grp1_Tmp = System.IO.File.ReadAllLines(@"C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\group1_verbs_Jap.txt");
-            String[] grp2_Tmp = System.IO.File.ReadAllLines(@"C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\group1_verbs_Jap.txt");
-            String[] grp3_Tmp = System.IO.File.ReadAllLines(@"C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\group1_verbs_Jap.txt");
-
-            //the length stays the same nomatter whether eng or jap
-            int TotalLenght = grp1_Tmp.Length + grp2_Tmp.Length + grp3_Tmp.Length;
-
-            for (int i = 0; i < TotalLenght; i++)
-            {
-                if (grp1_Tmp.Contains(selected_element))
-                {
-                    group1_verb.IsChecked = true;
-                    group2_verb.IsChecked = false;
-                    group3_verb.IsChecked = false;
-                }
-                if (grp2_Tmp.Contains(selected_element))
-                {
-                    group1_verb.IsChecked = false;
-                    group2_verb.IsChecked = true;
-                    group3_verb.IsChecked = false;
-                }
-                if (grp3_Tmp.Contains(selected_element))
-                {
-                    group1_verb.IsChecked = false;
-                    group2_verb.IsChecked = false;
-                    group3_verb.IsChecked = true;
-                }
-            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

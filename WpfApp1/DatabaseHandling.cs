@@ -118,5 +118,40 @@ namespace WpfApp1
                 ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Eng.Clear();
             }
         }
+        public void FindVerbGroup()
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).group1_verb.IsChecked = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).group2_verb.IsChecked = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).group3_verb.IsChecked = false;
+
+            DatabaseCon db = new DatabaseCon();
+            SqlConnection con = new SqlConnection(db.DBCon());
+            con.Open();
+
+            String selectedVerb = ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.SelectedItem.ToString();
+
+            SqlCommand cmd = new SqlCommand("select * from verb_groups where verb_hira = N'" + selectedVerb + "'", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            int verbGroup = 0;
+
+            while (dr.Read())
+            {
+                verbGroup = dr.GetInt32(3);
+            }
+            if (verbGroup == 1)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group1_verb.IsChecked = true;
+            }
+            else if (verbGroup == 2)
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group2_verb.IsChecked = true;
+            }
+            else
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).group3_verb.IsChecked = true;
+            }
+            dr.Close();
+        }
     }
 }
