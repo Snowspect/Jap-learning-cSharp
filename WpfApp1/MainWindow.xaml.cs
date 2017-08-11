@@ -19,6 +19,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
@@ -272,7 +273,10 @@ namespace WpfApp1
 
         private void Level_1_Checked(object sender, RoutedEventArgs e)
         {
-
+            WindowLvl1 sw = new WindowLvl1();
+            sw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            sw.Show();
+            this.Close();
         }
 
         private void Level_2_Checked(object sender, RoutedEventArgs e)

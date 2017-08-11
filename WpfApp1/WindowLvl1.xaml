@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp1.WindowLvl1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+		WindowStartupLocation="CenterOwner"
+        Title="WindowLvl1" Loaded="Second_Window_Loaded" Height="808" Width="1253">
+	<Window.Background>
+		<ImageBrush>
+			<ImageBrush.ImageSource>
+				<!--<BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/> -->
+				<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/>
+			</ImageBrush.ImageSource>
+		</ImageBrush>
+	</Window.Background>
+	<Grid>
+		<Grid HorizontalAlignment="Left" Height="524" Margin="68,125,0,0" VerticalAlignment="Top" Width="860">
+			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="10,10,0,0"/>
+			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="621,10,0,0"/>
+			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="419,10,0,0"/>
+			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="212,10,0,0"/>
+		</Grid>
+
+	</Grid>
+</Window>
