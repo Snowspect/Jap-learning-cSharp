@@ -7,21 +7,87 @@
         mc:Ignorable="d"
 		WindowStartupLocation="CenterOwner"
         Title="WindowLvl1" Loaded="Second_Window_Loaded" Height="808" Width="1253">
-	<Window.Background>
-		<ImageBrush>
-			<ImageBrush.ImageSource>
-				<!--<BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/> -->
-				<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/>
-			</ImageBrush.ImageSource>
-		</ImageBrush>
-	</Window.Background>
-	<Grid>
-		<Grid HorizontalAlignment="Left" Height="524" Margin="68,125,0,0" VerticalAlignment="Top" Width="860">
-			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="10,10,0,0"/>
-			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="621,10,0,0"/>
-			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="419,10,0,0"/>
-			<StackPanel HorizontalAlignment="Left" Height="504" VerticalAlignment="Top" Width="202" Margin="212,10,0,0"/>
-		</Grid>
+    <Window.Background>
+        <ImageBrush>
+            <ImageBrush.ImageSource>
+                <BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/>
+                <!--<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/> -->
+            </ImageBrush.ImageSource>
+        </ImageBrush>
+    </Window.Background>
+    <Grid>
+        <Expander x:Name="Level" Header="Level" HorizontalAlignment="Left" Height="177" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.763,0.649" Margin="0,73,0,0">
+            <StackPanel  Margin="0,0,-2,0" Height="159">
+                <StackPanel Margin="0,0,1,0" RenderTransformOrigin="0.5,0.5" Height="159" >
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.021"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+                    <RadioButton  Content="Level 1" Margin="10,0,0,0" Checked="Level_1_Checked"/>
+                    <RadioButton  Content="Level 2" Margin="10,0,0,0" Checked="Level_2_Checked"/>
+                    <RadioButton  Content="Level 3" Margin="10,0,0,0" Checked="Level_3_Checked"/>
+                    <RadioButton  Content="Level 4" Margin="10,0,0,0" Checked="Level_4_Checked"/>
+                    <RadioButton  Content="Level 5" Margin="10,0,0,0" Checked="Level_5_Checked"/>
+                    <RadioButton  Content="Level 6" Margin="10,0,0,0" Checked="Level_6_Checked" HorizontalAlignment="Left" Width="74"/>
+                    <RadioButton  Content="Level 7" Margin="10,0,0,0" Checked="Level_7_Checked"/>
+                    <RadioButton  Content="Level 8" Margin="10,0,0,0" Checked="Level_8_Checked"/>
+                    <RadioButton  Content="Level 9" Margin="10,0,0,0" Checked="Level_9_Checked"/>
+                    <RadioButton  Content="Free M." Margin="10,0,0,0" Checked="Level_FM_Checked"/>
+                </StackPanel>
 
-	</Grid>
+            </StackPanel>
+        </Expander>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,12,0,0"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,12,0,727" Width="87" FontSize="16" Height="38"/>
+        <RadioButton Content="e" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" Margin="530,12,0,727"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,55,0,0" RenderTransformOrigin="0.532,-0.421"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,12,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <RadioButton Content="o" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" RenderTransformOrigin="1.238,0.526" Margin="530,55,0,684"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,98,0,0" RenderTransformOrigin="5.681,0.474"/>
+        <RadioButton Content="e" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" Margin="530,98,0,641"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,141,0,0" RenderTransformOrigin="0.532,-0.421"/>
+        <RadioButton Content="o" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" RenderTransformOrigin="1.238,0.526" Margin="530,141,0,598"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,184,0,0"/>
+        <RadioButton Content="e" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" Margin="530,184,0,555"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,227,0,0" RenderTransformOrigin="0.532,-0.421"/>
+        <RadioButton Content="o" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" RenderTransformOrigin="1.238,0.526" Margin="530,227,0,512"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,55,0,684" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,55,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,98,0,641" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,98,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,141,0,598" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,141,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,184,0,555" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,184,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,227,0,512" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,227,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,272,0,0"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,272,0,467" Width="87" FontSize="16" Height="38"/>
+        <RadioButton Content="e" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" Margin="530,272,0,467"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,315,0,0" RenderTransformOrigin="0.532,-0.421"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,272,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <RadioButton Content="o" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" RenderTransformOrigin="1.238,0.526" Margin="530,315,0,424"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,358,0,0" RenderTransformOrigin="5.681,0.474"/>
+        <RadioButton Content="e" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" Margin="530,358,0,381"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,401,0,0" RenderTransformOrigin="0.532,-0.421"/>
+        <RadioButton Content="o" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" RenderTransformOrigin="1.238,0.526" Margin="530,401,0,338"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,444,0,0"/>
+        <RadioButton Content="e" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" Margin="530,444,0,295"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="47" Margin="520,487,0,0" RenderTransformOrigin="0.532,-0.421"/>
+        <RadioButton Content="o" HorizontalAlignment="Left"  VerticalAlignment="Center" VerticalContentAlignment="Center" Height="38" Width="42" RenderTransformOrigin="1.238,0.526" Margin="530,487,0,252"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,315,0,424" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,315,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,358,0,381" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,358,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,401,0,338" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,401,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,444,0,295" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,444,0,0" RenderTransformOrigin="0.505,0.679"/>
+        <Label Content="え　/　エ" HorizontalAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="577,487,0,252" Width="87" FontSize="16" Height="38"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="92" Margin="572,487,0,0" RenderTransformOrigin="0.505,0.679"/>
+    </Grid>
 </Window>

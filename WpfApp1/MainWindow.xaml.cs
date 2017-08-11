@@ -276,7 +276,6 @@ namespace WpfApp1
             WindowLvl1 sw = new WindowLvl1();
             sw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             sw.Show();
-            this.Close();
         }
 
         private void Level_2_Checked(object sender, RoutedEventArgs e)

@@ -28,5 +28,87 @@ namespace WpfApp1
         {
 
         }
+
+        private void Level_1_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_2_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_3_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_4_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_5_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_6_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_7_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Level_8_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_9_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Level_FM_Checked(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            mw.Show();
+            this.Close();
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListView_SelectionChanged_3(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
