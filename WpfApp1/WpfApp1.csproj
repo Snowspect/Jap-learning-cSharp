@@ -114,5 +114,8 @@
   <ItemGroup>
     <Resource Include="FireWatch_Landscape.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="frost.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
