@@ -153,5 +153,60 @@ namespace WpfApp1
             }
             dr.Close();
         }
+        public void RetrieveAllStructures()
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Clear();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Clear();
+
+            DatabaseCon db = new DatabaseCon();
+            SqlConnection con = new SqlConnection(db.DBCon());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select * from patterns", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            while (dr.Read())
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).structureArray.Add(dr.GetString(1));
+            }
+            dr.Close();
+            con.Close();
+        }
+        public void RetrieveStructure(int chosenStructure)
+        {
+            DatabaseCon db = new DatabaseCon();
+            SqlConnection con = new SqlConnection(db.DBCon());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select * from patterns where pattern_index = " + chosenStructure, con);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            string dissect = "";
+            while (dr.Read())
+            {
+                ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(1));
+                dissect = dr.GetString(1);
+            }
+
+            Random nrd = new Random();
+            string time = "";
+            while (dr.Read())
+            {
+                if (dissect.Contains("time") == true)
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add("1");
+                    cmd = new SqlCommand("select * from week_time where week_day_index = 4");
+                    dr = cmd.ExecuteReader();
+                    time = dr.GetString(1);
+                    time = "22";
+                }
+            }
+            ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text = time;
+            dr.Close();
+            con.Close();
+
+
+
+        }
     }
 }

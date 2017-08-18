@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" x:Name="primary_window" Loaded="Window_Loaded" Height="808" Width="1253">
+    
     <Window.Background>
         <ImageBrush>
             <ImageBrush.ImageSource>
-                <!-- <BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/> -->
-				<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/>
-			</ImageBrush.ImageSource>
+                <BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/>
+                <!-- 	<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/>-->
+            </ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>
     <Grid Margin="0,0,2,-21">
@@ -45,7 +46,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Background="Ivory" CornerRadius="3" HorizontalAlignment="Left" Height="30" Margin="18,296,0,0" VerticalAlignment="Top" Width="223" Grid.ColumnSpan="2" Grid.Column="2"/>
         <RadioButton x:Name="Special_cases" Content="Specials" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="23,296,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.059,0.8" Checked="Special_cases_Checked" Height="28" Width="218" FontFamily="Yu Gothic UI Light" FontSize="18" Grid.ColumnSpan="2" Grid.Column="2"/>
         <Button x:Name="Correct" Content="Input" HorizontalAlignment="Left" Margin="687,576,0,0" VerticalAlignment="Top" Width="86" Click="Correct_Click" Height="42" Grid.Column="4"/>
-        <TextBox x:Name="InputSentence_Jap" Background="Ivory" HorizontalAlignment="Left" Height="81" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="927" Margin="16,576,0,0" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Yu Gothic UI Light" Grid.ColumnSpan="3" Grid.Column="2" Opacity="0.5"/>
+        <TextBox x:Name="InputSentence_Jap" Background="Ivory" HorizontalAlignment="Left" Height="81" TextWrapping="Wrap" VerticalAlignment="Top" Width="927" Margin="16,576,0,0" TextChanged="TextBox_TextChanged" FontSize="24" FontFamily="Yu Gothic UI Light" Grid.ColumnSpan="3" Grid.Column="2" Opacity="0.5"/>
         <TextBlock x:Name="Japan_Pre_text" IsHitTestVisible="False" Margin="23,576,36,154" MinWidth="50" Text="Japanese Input" Visibility="Visible" Foreground="Black" RenderTransformOrigin="4.95,0.587" Grid.Column="2" FontSize="24" FontFamily="Yu Gothic UI Light" Opacity="0.5"/>
         <TextBox x:Name="InputSentence_Eng" Background="Ivory"  HorizontalAlignment="Left" Height="81" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="926" Margin="17,669,0,0" TextChanged="TextBox_TextChanged_Eng" FontSize="24" FontFamily="Yu Gothic UI Light" Grid.ColumnSpan="3" Grid.Column="2" Opacity="0.5"/>
         <TextBlock x:Name="English_Pre_text" IsHitTestVisible="False" Margin="17,669,72,60" MinWidth="50" Text="English Input" Visibility="Visible" Foreground="Black" RenderTransformOrigin="4.95,0.587" Grid.Column="2" FontSize="24" FontFamily="Yu Gothic UI Light" Opacity="0.5"/>
@@ -108,5 +109,7 @@
             <RadioButton x:Name="group2_choice" Content="-う = -います" Foreground="white" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top"/>
             <RadioButton x:Name="group3_choice" Content="Irregular" Foreground="White" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
         </Grid>
+        <Button Content="Create Dialogue" Background="AliceBlue" Grid.Column="4" HorizontalAlignment="Left" Margin="774,10,0,0" VerticalAlignment="Top" Width="106" Click="Create_Dialogue_Click"/>
     </Grid>
+    
 </Window>

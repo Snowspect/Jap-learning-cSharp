@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace WpfApp1
 {
@@ -177,14 +178,7 @@ namespace WpfApp1
 
         private void Incorrect_Click(object sender, RoutedEventArgs e)
         {
-            //put incorrect sentences into list with incorrect sentences
-            string Texter = InputSentence_Jap.Text;
 
-            //stationary
-            System.IO.File.WriteAllText(@"C:\Users\Dan\Source\Repos\Ladtos2\WpfApp1\Input.txt", Texter);
-
-            //laptop
-            System.IO.File.WriteAllText(@"c:\users\tooth\onedrive\dokumenter\visual studio 2017\Projects\WpfApp1\WpfApp1\Input.txt", Texter);
         }
 
         private void Correct_Click(object sender, RoutedEventArgs e)
@@ -381,6 +375,30 @@ namespace WpfApp1
             {
                 Katakana_Pre_text.Visibility = System.Windows.Visibility.Visible;
             }
+        }
+
+        public List<string> structureArray = new List<string>();
+
+        private void Create_Dialogue_Click(object sender, RoutedEventArgs e)
+        {
+            structureArray.Clear();
+            //method to pick all structures from database
+            DatabaseHandling rtd = new DatabaseHandling();
+            rtd.RetrieveAllStructures();
+
+            Boolean pick_structure = true;
+
+            Random rnd = new Random();
+            int structure_number = rnd.Next(1, structureArray.Count+1);
+
+            //structure_number
+            rtd.RetrieveStructure(4);
+
+            //foreach (var structure in structureArray)
+            //{
+            //    listBox.Items.Add(structure);
+            //}
+            //hardcode each method to take what it needs
         }
     }
 }

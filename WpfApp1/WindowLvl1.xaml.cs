@@ -118,7 +118,30 @@ namespace WpfApp1
 
         private void Button_Click_Previous(object sender, RoutedEventArgs e)
         {
-
+            if (firstGrid == true)
+            {
+                firstGrid = false;
+                First_alphabet_grid.Visibility = System.Windows.Visibility.Collapsed;
+                thirdGrid = true;
+                Third_alphabet_grid.Visibility = System.Windows.Visibility.Visible;
+                Third_alphabet_grid.Margin = new Thickness(178, 112, 0, 0);
+            }
+            else if (thirdGrid == true)
+            {
+                thirdGrid = false;
+                Third_alphabet_grid.Visibility = System.Windows.Visibility.Collapsed;
+                secondGrid = true;
+                Second_alphabet_grid.Visibility = System.Windows.Visibility.Visible;
+                Second_alphabet_grid.Margin = new Thickness(178, 112, 0, 0);
+            }
+            else if (secondGrid == true)
+            {
+                secondGrid = false;
+                Second_alphabet_grid.Visibility = System.Windows.Visibility.Collapsed;
+                firstGrid = true;
+                First_alphabet_grid.Visibility = System.Windows.Visibility.Visible;
+                First_alphabet_grid.Margin = new Thickness(178, 112, 0, 0);
+            }
         }
 
         private void Button_Click_Next(object sender, RoutedEventArgs e)
@@ -147,6 +170,11 @@ namespace WpfApp1
                 First_alphabet_grid.Visibility = System.Windows.Visibility.Visible;
                 First_alphabet_grid.Margin = new Thickness(178, 112, 0, 0);
             }
+
+        }
+
+        private void btnOpenAudioFile_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
