@@ -10,9 +10,9 @@
     <Window.Background>
         <ImageBrush>
             <ImageBrush.ImageSource>
-                <BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/>
-                <!-- 	<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/>-->
-            </ImageBrush.ImageSource>
+                <!--<BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/> -->
+				<BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/>
+			</ImageBrush.ImageSource>
         </ImageBrush>
     </Window.Background>
     <Grid Margin="0,0,2,-21">
