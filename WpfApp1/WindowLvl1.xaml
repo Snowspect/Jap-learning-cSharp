@@ -10,8 +10,8 @@
     <Window.Background>
         <ImageBrush>
             <ImageBrush.ImageSource>
-                <!--<BitmapImage UriSource="C:\Users\Dan\Source\Repos\Ladtos44\WpfApp1\frost.jpg"/>-->
-                <BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\frost.jpg"/>
+                <BitmapImage UriSource="C:\Users\Dan\Source\Repos\Ladtos44\WpfApp1\frost.jpg"/>
+                <!-- <BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\frost.jpg"/> -->
                 <!-- <BitmapImage UriSource="C:/Users/Dan/Source/Repos/Ladtos2/WpfApp1/FireWatch_Landscape.png"/> -->
                 <!-- <BitmapImage UriSource="C:\Users\tooth\Source\Repos\Ladtos3\WpfApp1\FireWatch_Landscape.png"/> -->
             </ImageBrush.ImageSource>
