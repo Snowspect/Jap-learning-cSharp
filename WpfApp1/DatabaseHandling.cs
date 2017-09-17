@@ -187,26 +187,158 @@ namespace WpfApp1
                 ((MainWindow)System.Windows.Application.Current.MainWindow).listBox2.Items.Add(dr.GetString(1));
                 dissect = dr.GetString(1);
             }
+            dr.Close();
+
+            List<string> conjugations = new List<string>();
+            List<string> objects = new List<string>();
+            List<string> places = new List<string>();
+            List<string> numbers = new List<string>();
+            List<string> special = new List<string>();
+            List<string> verbs = new List<string>();
+            List<string> times = new List<string>();
+            List<string> users = new List<string>();
+
+            if (1 == 1)
+            {
+                cmd = new SqlCommand("select * from patterns", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    ((MainWindow)System.Windows.Application.Current.MainWindow).structureArray.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from conjugation", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    conjugations.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from noun_object", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    objects.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from noun_place", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    places.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from numbers", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    numbers.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from users", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    users.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from verb_groups", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    verbs.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from week_time", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    times.Add(dr.GetString(1));
+                }
+                dr.Close();
+            }
 
             Random nrd = new Random();
             string time = "";
-            while (dr.Read())
+            string noun1 = "";
+            string noun2 = "";
+            string object1 = "";
+            string object2 = "";
+            string person = "";
+            string place = "";
+            string conjugation = "";
+            string verb_notCJ = "";
+            string verb_CJ = "";
+
+            if (dissect.Equals("time+object+を+verb"))
             {
-                if (dissect.Contains("time") == true)
+                cmd = new SqlCommand("select * from week_time where week_day_index = " + nrd.Next(1, times.Count), con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    ((MainWindow)System.Windows.Application.Current.MainWindow).listBox.Items.Add("1");
-                    cmd = new SqlCommand("select * from week_time where week_day_index = 4");
-                    dr = cmd.ExecuteReader();
                     time = dr.GetString(1);
-                    time = "22";
                 }
+                dr.Close();
+                cmd = new SqlCommand("select * from noun_object where object_index = " + nrd.Next(1, objects.Count), con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    object1 = dr.GetString(1);
+                }
+                dr.Close();
+                cmd = new SqlCommand("select * from verb_groups where verb_index = " + nrd.Next(1, verbs.Count), con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    verb_notCJ = dr.GetString(1);
+                }
+                dr.Close();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text = "" + time + object1 + "を" + verb_notCJ;
             }
-            ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text = time;
+            if (dissect.Equals("(person)+noun+は+verb"))
+            {
+                cmd = new SqlCommand("select * from users where user_index = " + nrd.Next(1, users.Count), con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    time = dr.GetString(1);
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from noun_object where object_index = " + nrd.Next(1, objects.Count), con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    objects.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                cmd = new SqlCommand("select * from verb_groups where verb_index = " + nrd.Next(1, verbs.Count), con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    verbs.Add(dr.GetString(1));
+                }
+                dr.Close();
+
+                Random rnd = new Random();
+                cmd = new SqlCommand("select * from users", con); 
+                dr = cmd.ExecuteReader();
+                while(dr.Read())
+                {
+                    users.Add(dr.GetString(1));
+                }
+                dr.Close();
+            }
             dr.Close();
             con.Close();
-
-
-
         }
     }
 }

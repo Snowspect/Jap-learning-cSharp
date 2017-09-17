@@ -381,24 +381,20 @@ namespace WpfApp1
 
         private void Create_Dialogue_Click(object sender, RoutedEventArgs e)
         {
+            InputSentence_Jap.Clear();
+
             structureArray.Clear();
-            //method to pick all structures from database
+            //method to pick all structures from database.. done in order to be able to pick more than one.
             DatabaseHandling rtd = new DatabaseHandling();
             rtd.RetrieveAllStructures();
 
             Boolean pick_structure = true;
 
             Random rnd = new Random();
-            int structure_number = rnd.Next(1, structureArray.Count+1);
+            int structure_number = rnd.Next(1, structureArray.Count + 1);
 
             //structure_number
             rtd.RetrieveStructure(4);
-
-            //foreach (var structure in structureArray)
-            //{
-            //    listBox.Items.Add(structure);
-            //}
-            //hardcode each method to take what it needs
         }
     }
 }
