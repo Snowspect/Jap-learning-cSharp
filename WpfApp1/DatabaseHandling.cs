@@ -308,7 +308,7 @@ namespace WpfApp1
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    time = dr.GetString(1);
+                    person = dr.GetString(1);
                 }
                 dr.Close();
 
@@ -316,7 +316,7 @@ namespace WpfApp1
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    objects.Add(dr.GetString(1));
+                    object1 = dr.GetString(1);
                 }
                 dr.Close();
 
@@ -324,20 +324,14 @@ namespace WpfApp1
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    verbs.Add(dr.GetString(1));
+                    verb_notCJ = dr.GetString(1);
                 }
                 dr.Close();
 
-                Random rnd = new Random();
-                cmd = new SqlCommand("select * from users", con); 
-                dr = cmd.ExecuteReader();
-                while(dr.Read())
-                {
-                    users.Add(dr.GetString(1));
-                }
-                dr.Close();
+                ((MainWindow)System.Windows.Application.Current.MainWindow).InputSentence_Jap.Text = "" + person + object1 + "は" + verb_notCJ;
             }
             dr.Close();
+
             con.Close();
         }
     }

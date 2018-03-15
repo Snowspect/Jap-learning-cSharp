@@ -388,13 +388,13 @@ namespace WpfApp1
             DatabaseHandling rtd = new DatabaseHandling();
             rtd.RetrieveAllStructures();
 
-            Boolean pick_structure = true;
+            //Boolean pick_structure = true;
 
             Random rnd = new Random();
             int structure_number = rnd.Next(1, structureArray.Count + 1);
 
             //structure_number
-            rtd.RetrieveStructure(4);
+            rtd.RetrieveStructure(5);
         }
     }
 }
