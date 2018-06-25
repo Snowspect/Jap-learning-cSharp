@@ -23,6 +23,9 @@ namespace WpfApp1
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
+        /// <summary>
+        /// Hides subcategory boxes (you can see them if you test the program and click verbs or nouns
+        /// </summary>
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ChangeLayout cl = new ChangeLayout();
@@ -37,7 +40,7 @@ namespace WpfApp1
             System.Windows.Clipboard.SetText(string.Join(Environment.NewLine, listBox.SelectedItems.OfType<string>().ToArray()));
 
             //check the checkbox for verb group.
-            CheckSelectAndMarkGroupLeftListbox();
+            CheckSelectAndMarkLeftListbox();
         }
 
         private void ListBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -185,13 +188,13 @@ namespace WpfApp1
         {
             //put correct sentence into list with correct sentences
             //
-            RadioButtonClass RadioBt = new RadioButtonClass();
+            InsertingData RadioBt = new InsertingData();
             RadioBt.CheckifChecked();
         }
 
 
-
-        private void CheckSelectAndMarkGroupLeftListbox()
+        //Triggered when clicked left box //Also triggeres the function when clicking right function.
+        private void CheckSelectAndMarkLeftListbox()
         {
             //checks if an item is actually selected and mark correct check box based on selected verb.
             if (listBox.SelectedIndex != -1)
@@ -251,7 +254,7 @@ namespace WpfApp1
                 }
             }
         }
-
+        //triggered by clicking right listbox (also triggers the method that runs when clicking left listbox (is not an eternal loop, as the selection doesn't change on the first )
         private void CheckSelectAndMarkGroupRightListbox()
         {
             //checks if an item is actually selected and mark correct check box based on selected verb.
@@ -267,9 +270,10 @@ namespace WpfApp1
 
         private void Level_1_Checked(object sender, RoutedEventArgs e)
         {
-            WindowLvl1 sw = new WindowLvl1();
+            WindowLvl1 sw = new WindowLvl1(this);
             sw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             sw.Show();
+            this.Hide();
         }
 
         private void Level_2_Checked(object sender, RoutedEventArgs e)

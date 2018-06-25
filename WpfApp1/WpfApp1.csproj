@@ -73,7 +73,7 @@
     <Compile Include="ChangeLayout.cs" />
     <Compile Include="DatabaseCon.cs" />
     <Compile Include="DatabaseHandling.cs" />
-    <Compile Include="RadioButtonClass.xaml.cs" />
+    <Compile Include="InsertingData.cs" />
     <Compile Include="WindowLvl1.xaml.cs">
       <DependentUpon>WindowLvl1.xaml</DependentUpon>
     </Compile>

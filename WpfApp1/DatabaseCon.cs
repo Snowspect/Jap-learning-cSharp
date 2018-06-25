@@ -13,8 +13,8 @@ namespace WpfApp1
     {
         public String DBCon()
         {
-            //return "server=(localdb)\\MSSQLLocalDB;database=japanese;Trusted_Connection=True"; //laptop
-            return "server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True"; //stationary
+            return "server=(localdb)\\MSSQLLocalDB;database=japanese;Trusted_Connection=True"; //laptop
+            //return "server=(localdb)\\ProjectsV13;database=Japanese;Trusted_Connection=True"; //stationary
         }
     }
 }

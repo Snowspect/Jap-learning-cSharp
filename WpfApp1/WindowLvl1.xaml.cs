@@ -22,8 +22,15 @@ namespace WpfApp1
         Boolean firstGrid = true;
         Boolean secondGrid = false;
         Boolean thirdGrid = false;
+        private MainWindow mv;
+
         public WindowLvl1()
         {
+            InitializeComponent();
+        }
+        public WindowLvl1(MainWindow mv)
+        {
+            this.mv = mv;
             InitializeComponent();
         }
 
@@ -80,9 +87,10 @@ namespace WpfApp1
 
         private void Level_FM_Checked(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            mw.Show();
+            
+            mv.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            mv.Show();
+            this.Hide();
             this.Close();
         }
 
